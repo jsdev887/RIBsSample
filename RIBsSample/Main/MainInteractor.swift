@@ -12,6 +12,7 @@ import RxSwift
 protocol MainRouting: ViewableRouting {
     func routeToFirstChild()
     func routeToSecondChild()
+    func routeToThirdChild()
 }
 
 protocol MainPresentable: Presentable {
@@ -25,9 +26,10 @@ final class MainInteractor: PresentableInteractor<MainPresentable>, MainInteract
     weak var router: MainRouting?
     weak var listener: MainListener?
 
-    override init(presenter: MainPresentable) {
+    init(presenter: MainPresentable, mutableMessageStream: MutableMessageStream) {
+        self.mutableMessageStream = mutableMessageStream
         super.init(presenter: presenter)
-        presenter.listener = self
+        presenter.listener = self      
     }
     
     func tapShowFirstChildButton() {
@@ -39,5 +41,14 @@ final class MainInteractor: PresentableInteractor<MainPresentable>, MainInteract
         print("PresentViewController - 2. RouteToSecondChild")
         router?.routeToSecondChild()
     }
-
+    
+    func tapShowThirdChildButton() {
+        print("Passing Data - 2. Route to third child with passing message")
+        mutableMessageStream.passMessage(newMessage: "💌 Data from parent")
+        router?.routeToThirdChild()
+    }
+    
+    // MARK: - Private
+    
+    private let mutableMessageStream: MutableMessageStream
 }

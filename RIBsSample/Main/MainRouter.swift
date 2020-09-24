@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol MainInteractable: Interactable, FirstChildListener, SecondChildListener {
+protocol MainInteractable: Interactable, FirstChildListener, SecondChildListener, ThirdChildListener {
     var router: MainRouting? { get set }
     var listener: MainListener? { get set }
 }
@@ -23,12 +23,14 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
     init(interactor: MainInteractable,
                   viewController: MainViewControllable,
                   firstBuildable: FirstChildBuildable,
-                  secondBuildable: SecondChildBuildable) {
+                  secondBuildable: SecondChildBuildable,
+                  thirdBuildable: ThirdChildBuildable) {
         
         let navController = UINavigationController(root: viewController)
         
         self.firstChildBuilder = firstBuildable
         self.secondChildBuilder = secondBuildable
+        self.thirdChildBuilder = thirdBuildable
         
         super.init(interactor: interactor, viewController: navController)
         interactor.router = self
@@ -60,10 +62,22 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
         viewController.showModal(viewController: second.viewControllable)
     }
     
+    func routeToThirdChild() {
+        removeCurrentChild()
+        
+        print("Passing Data - 3. Call a function to show")
+        
+        let third = thirdChildBuilder.build(withListener: interactor)
+        self.child = third
+        attachChild(third)
+        viewController.showModal(viewController: third.viewControllable)
+    }
+    
     // MARK: Private
     
     private var firstChildBuilder: FirstChildBuildable
     private var secondChildBuilder: SecondChildBuildable
+    private var thirdChildBuilder: ThirdChildBuildable
     private var child: ViewableRouting?
     
     private func removeCurrentChild() {

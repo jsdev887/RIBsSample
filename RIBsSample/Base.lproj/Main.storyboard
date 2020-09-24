@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7BM-4F-3Uc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="220"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UE3-dS-E8m">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="10"/>
@@ -67,6 +67,26 @@
                                             <constraint firstAttribute="height" constant="10" id="zl9-Tw-Qxh"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EH-1A-gg4">
+                                        <rect key="frame" x="0.0" y="150" width="414" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="82q-jh-8Ha"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <state key="normal" title="Passing data from parent to child with Rx">
+                                            <color key="titleColor" systemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onGoToThirdChildButton:" destination="f4T-h4-ePT" eventType="touchUpInside" id="1di-Cp-LTU"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zk1-W5-Kyu">
+                                        <rect key="frame" x="0.0" y="210" width="414" height="10"/>
+                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="uCp-R5-p6x"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -84,6 +104,37 @@
             </objects>
             <point key="canvasLocation" x="-393" y="195"/>
         </scene>
+        <!--Third Child View Controller-->
+        <scene sceneID="ART-N3-WAu">
+            <objects>
+                <viewController storyboardIdentifier="ThirdChildViewController" id="wIv-5D-Boh" customClass="ThirdChildViewController" customModule="RIBsSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wI4-xj-nZc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42A-5T-tIC">
+                                <rect key="frame" x="50" y="144" width="314" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8Q5-ED-0zX"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="8Q5-ED-0zX" firstAttribute="trailing" secondItem="42A-5T-tIC" secondAttribute="trailing" constant="50" id="49b-Mv-oGk"/>
+                            <constraint firstItem="42A-5T-tIC" firstAttribute="leading" secondItem="8Q5-ED-0zX" secondAttribute="leading" constant="50" id="MNi-S8-oRk"/>
+                            <constraint firstItem="42A-5T-tIC" firstAttribute="top" secondItem="8Q5-ED-0zX" secondAttribute="top" constant="100" id="acx-it-MvX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messageBoxLabel" destination="42A-5T-tIC" id="diw-VQ-vGa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hiG-3W-1a0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2004" y="195"/>
+        </scene>
         <!--First Child View Controller-->
         <scene sceneID="0iQ-Pe-Osc">
             <objects>
@@ -97,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzj-bH-pZS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114" y="1037"/>
+            <point key="canvasLocation" x="413" y="195"/>
         </scene>
         <!--Second Child View Controller-->
         <scene sceneID="4kX-1E-Sdm">
@@ -112,10 +163,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q73-Tw-otO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="616" y="189"/>
+            <point key="canvasLocation" x="1196" y="195"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="darkTextColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -127,6 +181,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

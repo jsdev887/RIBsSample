@@ -14,3 +14,9 @@ extension MainComponent: FirstChildDependency {
 
 extension MainComponent: SecondChildDependency {
 }
+
+extension MainComponent: ThirdChildDependency {
+    var messageStream: MessageStream {
+        return mutableMeesageStream
+    }
+}

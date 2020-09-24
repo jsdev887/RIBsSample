@@ -13,6 +13,7 @@ import UIKit
 protocol MainPresentableListener: class {    
     func tapShowFirstChildButton()
     func tapShowSecondChildButton()
+    func tapShowThirdChildButton()
 }
 
 final class MainViewController: UIViewController, MainPresentable, MainViewControllable {
@@ -29,6 +30,10 @@ final class MainViewController: UIViewController, MainPresentable, MainViewContr
         listener?.tapShowSecondChildButton()
     }
     
+    @IBAction func onGoToThirdChildButton(_ sender: Any) {
+        print("Passing Data - 1. Tap Button")
+        listener?.tapShowThirdChildButton()
+    }
     
     func present(viewController: ViewControllable) {}
     func showModal(viewController: ViewControllable) {}
@@ -41,8 +46,13 @@ extension UINavigationController: MainViewControllable {
         pushViewController(viewController.uiviewController, animated: true)
     }
     
-    func showModal(viewController: ViewControllable) {
-        print("PresentViewController - 4. Perform presentViewController")
+    func showModal(viewController: ViewControllable) {        
+        if viewController is SecondChildViewControllable {
+            print("PresentViewController - 4. Perform presentViewController")
+        } else if viewController is ThirdChildViewControllable {
+            print("Passing Data - 5. Perform presentViewController")
+        }
+        
         present(viewController.uiviewController, animated: true, completion: nil)
     }
 }

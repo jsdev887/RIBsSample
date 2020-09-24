@@ -10,7 +10,11 @@ import RIBs
 
 protocol MainDependency: Dependency {}
 
-final class MainComponent: Component<MainDependency> {}
+final class MainComponent: Component<MainDependency> {
+    var mutableMeesageStream: MutableMessageStream {
+        return shared { MessageStreamImpl() }
+    }
+}
 
 // MARK: - Builder
 
@@ -33,15 +37,17 @@ final class MainBuilder: Builder<MainDependency>, MainBuildable {
                    withIdentifier: "MainViewController"
                ) as! MainViewController
         
-        let interactor = MainInteractor(presenter: viewController)
+        let interactor = MainInteractor(presenter: viewController, mutableMessageStream: component.mutableMeesageStream)
         
         let firstBuilder = FirstChildBuilder(dependency: component)
         let secondBuilder = SecondChildBuilder(dependency: component)
-
+        let thirdBuilder = ThirdChildBuilder(dependency: component)
+        
         return MainRouter(interactor: interactor,
                           viewController: viewController,
                           firstBuildable: firstBuilder,
-                          secondBuildable: secondBuilder)
+                          secondBuildable: secondBuilder,
+                          thirdBuildable: thirdBuilder)
     }
     
 }
