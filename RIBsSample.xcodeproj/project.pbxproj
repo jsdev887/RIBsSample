@@ -32,6 +32,7 @@
 		1F8DCF0C251C30BD00E04D29 /* ThirdChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8DCF08251C30BC00E04D29 /* ThirdChildViewController.swift */; };
 		1F8DCF0D251C30BD00E04D29 /* ThirdChildBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8DCF09251C30BC00E04D29 /* ThirdChildBuilder.swift */; };
 		1F8DCF0E251C30BD00E04D29 /* ThirdChildInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8DCF0A251C30BD00E04D29 /* ThirdChildInteractor.swift */; };
+		1F96098B251DC56A006B336E /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F96098A251DC56A006B336E /* Helpers.swift */; };
 		68F4CEFB64364D20DFC21EA6 /* Pods_RIBsSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E77DE1D76D2C2B8DD75E883F /* Pods_RIBsSample.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		1F8DCF08251C30BC00E04D29 /* ThirdChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdChildViewController.swift; sourceTree = "<group>"; };
 		1F8DCF09251C30BC00E04D29 /* ThirdChildBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdChildBuilder.swift; sourceTree = "<group>"; };
 		1F8DCF0A251C30BD00E04D29 /* ThirdChildInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdChildInteractor.swift; sourceTree = "<group>"; };
+		1F96098A251DC56A006B336E /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		3CF62DE659FFF628D2D364CA /* Pods-RIBsSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIBsSample.debug.xcconfig"; path = "Target Support Files/Pods-RIBsSample/Pods-RIBsSample.debug.xcconfig"; sourceTree = "<group>"; };
 		793367EE7D9E1C31299C1041 /* Pods-RIBsSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RIBsSample.release.xcconfig"; path = "Target Support Files/Pods-RIBsSample/Pods-RIBsSample.release.xcconfig"; sourceTree = "<group>"; };
 		E77DE1D76D2C2B8DD75E883F /* Pods_RIBsSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RIBsSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,9 +105,10 @@
 			children = (
 				1F630F1725105CFA0064260B /* AppComponent.swift */,
 				1F630F1625105CFA0064260B /* SceneDelegate.swift */,
-				1F630F1825105CFA0064260B /* UINavigaionController+.swift */,
 				1F630F0225105BF90064260B /* AppDelegate.swift */,
-				1F8DCF03251C221D00E04D29 /* DataStream.swift */,
+				1F96098A251DC56A006B336E /* Helpers.swift */,
+				1F630F1825105CFA0064260B /* UINavigaionController+.swift */,
+				1F96098E251DC571006B336E /* Model */,
 				1F630F2825105FE40064260B /* Main */,
 				1F630F312510614E0064260B /* FirstChild */,
 				1F630F3A251087890064260B /* SecondChild */,
@@ -161,6 +164,14 @@
 				1F8DCF08251C30BC00E04D29 /* ThirdChildViewController.swift */,
 			);
 			path = ThirdChild;
+			sourceTree = "<group>";
+		};
+		1F96098E251DC571006B336E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F8DCF03251C221D00E04D29 /* DataStream.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		217BFE972D51CF37FA9C19E6 /* Frameworks */ = {
@@ -309,6 +320,7 @@
 				1F630F41251087A80064260B /* SecondChildBuilder.swift in Sources */,
 				1F8DCF04251C221D00E04D29 /* DataStream.swift in Sources */,
 				1F8DCF0E251C30BD00E04D29 /* ThirdChildInteractor.swift in Sources */,
+				1F96098B251DC56A006B336E /* Helpers.swift in Sources */,
 				1F630F42251087A80064260B /* SecondChildInteractor.swift in Sources */,
 				1F8DCF0D251C30BD00E04D29 /* ThirdChildBuilder.swift in Sources */,
 				1F8DCF0B251C30BD00E04D29 /* ThirdChildRouter.swift in Sources */,
