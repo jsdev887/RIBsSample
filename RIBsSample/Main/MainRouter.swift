@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol MainInteractable: Interactable, FirstChildListener, SecondChildListener, ThirdChildListener {
+protocol MainInteractable: Interactable, FirstChildListener, SecondChildListener, ThirdChildListener, FourthChildListener {
     var router: MainRouting? { get set }
     var listener: MainListener? { get set }
 }
@@ -24,13 +24,15 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
                   viewController: MainViewControllable,
                   firstBuildable: FirstChildBuildable,
                   secondBuildable: SecondChildBuildable,
-                  thirdBuildable: ThirdChildBuildable) {
+                  thirdBuildable: ThirdChildBuildable,
+                  fourthBuildable: FourthChildBuildable) {
         
         let navController = UINavigationController(root: viewController)
         
         self.firstChildBuilder = firstBuildable
         self.secondChildBuilder = secondBuildable
         self.thirdChildBuilder = thirdBuildable
+        self.fourthChildBuilder = fourthBuildable
         
         super.init(interactor: interactor, viewController: navController)
         interactor.router = self
@@ -49,6 +51,8 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
         self.child = first
         attachChild(first)
         viewController.present(viewController: first.viewControllable)
+        tree()
+
     }
     
     func routeToSecondChild() {
@@ -60,6 +64,7 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
         self.child = second
         attachChild(second)
         viewController.showModal(viewController: second.viewControllable)
+        tree()
     }
     
     func routeToThirdChild() {
@@ -71,6 +76,21 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
         self.child = third
         attachChild(third)
         viewController.showModal(viewController: third.viewControllable)
+        tree()
+
+    }
+    
+    func routeToFourthChild() {
+        removeCurrentChild()
+        
+        print("Passing Data - 3. Call a function to show")
+        
+        let fourth = fourthChildBuilder.build(withListener: interactor)
+        self.child = fourth
+        attachChild(fourth)
+        viewController.showModal(viewController: fourth.viewControllable)
+        tree()
+
     }
     
     // MARK: Private
@@ -78,6 +98,7 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
     private var firstChildBuilder: FirstChildBuildable
     private var secondChildBuilder: SecondChildBuildable
     private var thirdChildBuilder: ThirdChildBuildable
+    private var fourthChildBuilder: FourthChildBuildable
     private var child: ViewableRouting?
     
     private func removeCurrentChild() {

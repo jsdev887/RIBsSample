@@ -14,6 +14,7 @@ protocol MainPresentableListener: class {
     func tapShowFirstChildButton()
     func tapShowSecondChildButton()
     func tapShowThirdChildButton()
+    func tapShowFourthChildButton()
 }
 
 final class MainViewController: UIViewController, MainPresentable, MainViewControllable {
@@ -33,6 +34,11 @@ final class MainViewController: UIViewController, MainPresentable, MainViewContr
     @IBAction func onGoToThirdChildButton(_ sender: Any) {
         print("Passing Data - 1. Tap Button")
         listener?.tapShowThirdChildButton()
+    }
+    
+    @IBAction func onGoToFourthChildButton(_ sender: Any) {
+        print("Passing Data - 1. Tap Button")
+        listener?.tapShowFourthChildButton()
     }
     
     func present(viewController: ViewControllable) {}

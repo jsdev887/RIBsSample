@@ -13,6 +13,7 @@ protocol MainRouting: ViewableRouting {
     func routeToFirstChild()
     func routeToSecondChild()
     func routeToThirdChild()
+    func routeToFourthChild()
 }
 
 protocol MainPresentable: Presentable {
@@ -46,6 +47,10 @@ final class MainInteractor: PresentableInteractor<MainPresentable>, MainInteract
         print("Passing Data - 2. Route to third child with passing message")
         mutableMessageStream.passMessage(newMessage: "💌 Data from parent")
         router?.routeToThirdChild()
+    }
+    
+    func tapShowFourthChildButton() {
+        router?.routeToFourthChild()
     }
     
     // MARK: - Private

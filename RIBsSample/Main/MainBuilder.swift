@@ -42,12 +42,14 @@ final class MainBuilder: Builder<MainDependency>, MainBuildable {
         let firstBuilder = FirstChildBuilder(dependency: component)
         let secondBuilder = SecondChildBuilder(dependency: component)
         let thirdBuilder = ThirdChildBuilder(dependency: component)
+        let fourthBuilder = FourthChildBuilder(dependency: component)
         
         return MainRouter(interactor: interactor,
                           viewController: viewController,
                           firstBuildable: firstBuilder,
                           secondBuildable: secondBuilder,
-                          thirdBuildable: thirdBuilder)
+                          thirdBuildable: thirdBuilder,
+                          fourthBuildable: fourthBuilder)
     }
     
 }
