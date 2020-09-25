@@ -14,6 +14,10 @@ protocol SecondChildPresentableListener: class {}
 
 final class SecondChildViewController: UIViewController, SecondChildPresentable, SecondChildViewControllable {
 
+    internal static func instantiate() -> SecondChildViewController {
+        return Storyboard.Main.instantiate(SecondChildViewController.self)
+    }
+    
     weak var listener: SecondChildPresentableListener?
     
     override func viewDidLoad() {

@@ -30,12 +30,7 @@ final class MainBuilder: Builder<MainDependency>, MainBuildable {
 
     func build() -> LaunchRouting {
         let component = MainComponent(dependency: dependency)
-        let viewController = UIStoryboard(
-                   name: "Main",
-                   bundle: nil
-               ).instantiateViewController(
-                   withIdentifier: "MainViewController"
-               ) as! MainViewController
+        let viewController = MainViewController.instantiate()
         
         let interactor = MainInteractor(presenter: viewController, mutableMessageStream: component.mutableMeesageStream)
         

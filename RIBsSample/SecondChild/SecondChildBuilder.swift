@@ -26,13 +26,7 @@ final class SecondChildBuilder: Builder<SecondChildDependency>, SecondChildBuild
 
     func build(withListener listener: SecondChildListener) -> SecondChildRouting {
         let component = SecondChildComponent(dependency: dependency)
-        let viewController = UIStoryboard(
-            name: "Main",
-            bundle: nil
-        ).instantiateViewController(
-            withIdentifier: "SecondChildViewController"
-            ) as! SecondChildViewController
-        
+        let viewController = SecondChildViewController.instantiate()        
         let interactor = SecondChildInteractor(presenter: viewController)
         interactor.listener = listener
         return SecondChildRouter(interactor: interactor, viewController: viewController)

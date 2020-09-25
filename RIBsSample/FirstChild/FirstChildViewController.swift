@@ -14,6 +14,10 @@ protocol FirstChildPresentableListener: class {}
 
 final class FirstChildViewController: UIViewController, FirstChildPresentable, FirstChildViewControllable {
 
+    internal static func instantiate() -> FirstChildViewController {
+        return Storyboard.Main.instantiate(FirstChildViewController.self)
+    }
+    
     weak var listener: FirstChildPresentableListener?
     
     override func viewDidLoad() {

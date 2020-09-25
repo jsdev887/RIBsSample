@@ -15,6 +15,10 @@ protocol ThirdChildPresentableListener: class {
 
 final class ThirdChildViewController: UIViewController, ThirdChildPresentable, ThirdChildViewControllable {
 
+    internal static func instantiate() -> ThirdChildViewController {
+        return Storyboard.Main.instantiate(ThirdChildViewController.self)
+    }
+    
     weak var listener: ThirdChildPresentableListener?
     
     @IBOutlet weak var messageBoxLabel: UILabel!

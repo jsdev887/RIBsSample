@@ -18,6 +18,10 @@ protocol MainPresentableListener: class {
 
 final class MainViewController: UIViewController, MainPresentable, MainViewControllable {
 
+    internal static func instantiate() -> MainViewController {
+        return Storyboard.Main.instantiate(MainViewController.self)
+    }
+    
     weak var listener: MainPresentableListener?
     
     @IBAction func onGoToFirstChildButton(_ sender: Any) {

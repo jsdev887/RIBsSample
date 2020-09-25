@@ -32,13 +32,7 @@ final class ThirdChildBuilder: Builder<ThirdChildDependency>, ThirdChildBuildabl
     
     func build(withListener listener: ThirdChildListener) -> ThirdChildRouting {
         let component = ThirdChildComponent(dependency: dependency)
-        let viewController = UIStoryboard(
-            name: "Main",
-            bundle: nil
-        ).instantiateViewController(
-            withIdentifier: "ThirdChildViewController"
-        ) as! ThirdChildViewController
-        
+        let viewController = ThirdChildViewController.instantiate()        
         let interactor = ThirdChildInteractor(presenter: viewController,
                                               messageStream: component.messageStream)
         interactor.listener = listener

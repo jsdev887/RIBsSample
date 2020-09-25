@@ -26,14 +26,7 @@ final class FirstChildBuilder: Builder<FirstChildDependency>, FirstChildBuildabl
 
     func build(withListener listener: FirstChildListener) -> FirstChildRouting {
         let component = FirstChildComponent(dependency: dependency)
-        
-        let viewController = UIStoryboard(
-            name: "Main",
-            bundle: nil
-        ).instantiateViewController(
-            withIdentifier: "FirstChildViewController"
-        ) as! FirstChildViewController
-        
+        let viewController = FirstChildViewController.instantiate()
         let interactor = FirstChildInteractor(presenter: viewController)
         interactor.listener = listener
         return FirstChildRouter(interactor: interactor, viewController: viewController)
