@@ -49,7 +49,6 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
         self.child = first
         attachChild(first)
         viewController.present(viewController: first.viewControllable)
-        tree()
 
     }
     
@@ -62,7 +61,7 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
         self.child = second
         attachChild(second)
         viewController.showModal(viewController: second.viewControllable)
-        tree()
+
     }
     
     func routeToThirdChild() {
@@ -74,7 +73,6 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
         self.child = third
         attachChild(third)
         viewController.showModal(viewController: third.viewControllable)
-        tree()
 
     }
     
