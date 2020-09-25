@@ -20,6 +20,3 @@ extension MainComponent: ThirdChildDependency {
         return mutableMeesageStream
     }
 }
-
-extension MainComponent: FourthChildDependency {
-}

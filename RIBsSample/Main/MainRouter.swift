@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol MainInteractable: Interactable, FirstChildListener, SecondChildListener, ThirdChildListener, FourthChildListener {
+protocol MainInteractable: Interactable, FirstChildListener, SecondChildListener, ThirdChildListener {
     var router: MainRouting? { get set }
     var listener: MainListener? { get set }
 }
@@ -24,15 +24,13 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
                   viewController: MainViewControllable,
                   firstBuildable: FirstChildBuildable,
                   secondBuildable: SecondChildBuildable,
-                  thirdBuildable: ThirdChildBuildable,
-                  fourthBuildable: FourthChildBuildable) {
+                  thirdBuildable: ThirdChildBuildable) {
         
         let navController = UINavigationController(root: viewController)
         
         self.firstChildBuilder = firstBuildable
         self.secondChildBuilder = secondBuildable
         self.thirdChildBuilder = thirdBuildable
-        self.fourthChildBuilder = fourthBuildable
         
         super.init(interactor: interactor, viewController: navController)
         interactor.router = self
@@ -80,25 +78,11 @@ final class MainRouter: LaunchRouter<MainInteractable, MainViewControllable>, Ma
 
     }
     
-    func routeToFourthChild() {
-        removeCurrentChild()
-        
-        print("Passing Data - 3. Call a function to show")
-        
-        let fourth = fourthChildBuilder.build(withListener: interactor)
-        self.child = fourth
-        attachChild(fourth)
-        viewController.showModal(viewController: fourth.viewControllable)
-        tree()
-
-    }
-    
     // MARK: Private
     
     private var firstChildBuilder: FirstChildBuildable
     private var secondChildBuilder: SecondChildBuildable
     private var thirdChildBuilder: ThirdChildBuildable
-    private var fourthChildBuilder: FourthChildBuildable
     private var child: ViewableRouting?
     
     private func removeCurrentChild() {
