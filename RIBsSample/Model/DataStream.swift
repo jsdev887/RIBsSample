@@ -7,6 +7,7 @@
 //
 
 import RxSwift
+import RxCocoa
 
 struct Message {
     let currentMessage: String
@@ -29,10 +30,10 @@ class MessageStreamImpl: MutableMessageStream {
     
     func passMessage(newMessage message: String) {
         let newMessage = Message(currentMessage: message)
-        variable.value = newMessage
+        variable.accept(newMessage)
     }
     
     // MARK: - Private
 
-    private let variable = Variable<Message>(Message(currentMessage: ""))
+    private let variable = BehaviorRelay<Message>(value: Message(currentMessage: ""))
 }
